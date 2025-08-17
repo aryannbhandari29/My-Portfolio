@@ -28,15 +28,22 @@
             transform: scale(1.05) rotate(1deg);
             box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5); /* Brighter violet shadow */
         }
+        @keyframes shimmer {
+            0% { background-position: -500%; }
+            100% { background-position: 500%; }
+        }
         .gradient-text {
-            background: linear-gradient(to right, #8b5cf6, #ec4899);
+            background: linear-gradient(to right, #8b5cf6 20%, #ec4899 40%, #8b5cf6 60%, #ec4899 80%);
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            animation: shimmer 8s linear infinite;
         }
         .glass-card {
             background: rgba(255, 255, 255, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .hero-glow {
             box-shadow: 0 0 80px 20px rgba(124, 58, 237, 0.4);
@@ -68,6 +75,10 @@
             width: 100%;
             height: 100%;
         }
+        .competency-card:hover {
+            border-color: rgba(124, 58, 237, 0.5);
+            box-shadow: 0 0 15px rgba(124, 58, 237, 0.5);
+        }
     </style>
 </head>
 <body class="bg-black text-gray-200">
@@ -75,11 +86,14 @@
     <!-- Header -->
     <header class="bg-black/70 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-extrabold text-white tracking-wider">ARYAN BHANDARI</a>
+            <a href="#" class="flex items-center space-x-3">
+                <span class="bg-white text-black font-black text-xl p-2 rounded-md leading-none">AB</span>
+                <span class="text-xl font-bold text-white tracking-wider hidden sm:block">ARYAN BHANDARI</span>
+            </a>
             <nav class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="text-gray-300 hover:text-white transition duration-300">About</a>
-                <a href="#skills" class="text-gray-300 hover:text-white transition duration-300">Skills</a>
-                <a href="#creative" class="text-gray-300 hover:text-white transition duration-300">Creative Work</a>
+                <a href="#craft" class="text-gray-300 hover:text-white transition duration-300">My Craft</a>
+                <a href="#work" class="text-gray-300 hover:text-white transition duration-300">My Work</a>
                 <a href="#contact" class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-5 rounded-lg transition duration-300">Contact</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-white">
@@ -89,8 +103,8 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 glass-card m-4 rounded-lg border-none">
             <a href="#about" class="block py-2 text-gray-200 hover:text-white">About</a>
-            <a href="#skills" class="block py-2 text-gray-200 hover:text-white">Skills</a>
-            <a href="#creative" class="block py-2 text-gray-200 hover:text-white">Creative Work</a>
+            <a href="#craft" class="block py-2 text-gray-200 hover:text-white">My Craft</a>
+            <a href="#work" class="block py-2 text-gray-200 hover:text-white">My Work</a>
             <a href="#contact" class="block mt-2 bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-lg text-center">Contact</a>
         </div>
     </header>
@@ -101,7 +115,7 @@
              <div class="absolute -top-20 -left-20 w-96 h-96 bg-violet-500 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
              <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
             <div class="max-w-4xl mx-auto relative z-10">
-                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4">
+                <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4">
                     <span class="gradient-text">Creator, Filmmaker,</span><br/>and Full Stack Developer
                 </h1>
                 <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
@@ -119,93 +133,78 @@
         <!-- About Me Section -->
         <section id="about" class="py-20 bg-black section-fade-in">
             <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-2">
-                        <img src="profile.jpg" alt="Aryan Bhandari" class="rounded-2xl w-full max-w-xs mx-auto border-4 border-violet-500/50 shadow-lg hero-glow">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="interactive-card">
+                        <img src="profile.jpg" alt="Aryan Bhandari" class="rounded-2xl w-full max-w-sm mx-auto border-4 border-violet-500/50 shadow-lg hero-glow">
                     </div>
-                    <div class="md:col-span-3">
-                        <h2 class="text-4xl font-bold text-white mb-4">From Storyboard to Keyboard</h2>
-                        <p class="text-gray-400 text-lg">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">From Storyboard to Keyboard</h2>
+                        <p class="text-gray-400 text-lg mb-8">
                            I'm a creator who learned to manage entire projects—from script to final cut—on my own. This taught me to solve problems creatively and see the bigger picture. Now, I'm channeling that same passion into technology, learning to build applications with the same dedication I give to my films.
                         </p>
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="glass-card competency-card p-4 rounded-lg text-center">
+                                <i data-lucide="film" class="w-8 h-8 text-violet-400 mx-auto mb-2"></i>
+                                <h4 class="font-semibold text-white">Storytelling</h4>
+                            </div>
+                            <div class="glass-card competency-card p-4 rounded-lg text-center">
+                                <i data-lucide="clipboard-check" class="w-8 h-8 text-violet-400 mx-auto mb-2"></i>
+                                <h4 class="font-semibold text-white">Project Management</h4>
+                            </div>
+                            <div class="glass-card competency-card p-4 rounded-lg text-center">
+                                <i data-lucide="lightbulb" class="w-8 h-8 text-violet-400 mx-auto mb-2"></i>
+                                <h4 class="font-semibold text-white">Problem Solving</h4>
+                            </div>
+                            <div class="glass-card competency-card p-4 rounded-lg text-center">
+                                <i data-lucide="mic" class="w-8 h-8 text-violet-400 mx-auto mb-2"></i>
+                                <h4 class="font-semibold text-white">Public Speaking</h4>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         
-        <!-- Skills Section -->
-        <section id="skills" class="py-20 section-fade-in">
+        <!-- My Craft Section -->
+        <section id="craft" class="py-20 section-fade-in">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-5xl font-extrabold text-white">Skills & Competencies</h2>
-                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">A blend of creative strengths and a growing technical foundation.</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white">My Craft</h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">The intersection of creativity and technology.</p>
                 </div>
-
-                <!-- Professional Competencies (Soft Skills) -->
-                <div class="mb-16">
-                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Professional Competencies</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
-                                <i data-lucide="film" class="w-10 h-10 text-violet-400"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white">Storytelling</h4>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
-                                <i data-lucide="clipboard-check" class="w-10 h-10 text-violet-400"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white">Project Management</h4>
-                        </div>
-                        <div class="text-center">
-                            <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
-                                <i data-lucide="lightbulb" class="w-10 h-10 text-violet-400"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white">Problem Solving</h4>
-                        </div>
-                        <div class="text-center">
-                             <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
-                                <i data-lucide="mic" class="w-10 h-10 text-violet-400"></i>
-                            </div>
-                            <h4 class="text-xl font-semibold text-white">Public Speaking</h4>
+                <div class="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+                    <div class="glass-card p-8 rounded-xl interactive-card">
+                        <h3 class="text-3xl font-bold text-white mb-6 text-center gradient-text">Creative Toolkit</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Video Editing (DaVinci Resolve)</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Graphic Design</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Canva</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Videography</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Direction</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Script Writing</span>
                         </div>
                     </div>
-                </div>
-
-                <!-- Creative Production Skills -->
-                <div class="mb-16">
-                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Creative Production</h3>
-                    <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Video Editing (DaVinci Resolve)</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Graphic Design</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Canva</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Videography</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Direction</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Script Writing</span>
-                    </div>
-                </div>
-
-                <!-- My Technical Journey -->
-                <div>
-                    <h3 class="text-3xl font-bold text-white mb-8 text-center">My Technical Journey</h3>
-                    <div class="flex flex-wrap justify-center gap-4">
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Full Stack Web Development</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Data Structures & Algorithms</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">JavaScript</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">React</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Node.js</span>
-                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">C++</span>
+                    <div class="glass-card p-8 rounded-xl interactive-card">
+                        <h3 class="text-3xl font-bold text-white mb-6 text-center gradient-text">Technical Stack</h3>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Full Stack Web Development</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Data Structures & Algorithms</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">JavaScript</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">React</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">Node.js</span>
+                            <span class="bg-gray-800 text-gray-300 font-medium px-4 py-2 rounded-full">C++</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Creative Work Section -->
-        <section id="creative" class="py-20 bg-black section-fade-in">
+        <!-- My Work Section -->
+        <section id="work" class="py-20 bg-black section-fade-in">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-5xl font-extrabold text-white">My Creative Universe</h2>
-                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">A showcase of my skills in storytelling, filmmaking, and design.</p>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white">My Work</h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">A showcase of my skills in action.</p>
                 </div>
 
                 <!-- Viral Video -->
@@ -213,7 +212,7 @@
                      <h3 class="text-3xl font-bold text-center text-white mb-2">Most Viral Video</h3>
                      <p class="text-center text-gray-400 mb-8">This KIIT University tour reached over 32k viewers and highlights my vlogging style.</p>
                      <div class="max-w-4xl mx-auto">
-                        <div class="aspect-video rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 hero-glow">
+                        <div class="aspect-video rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 hero-glow interactive-card">
                             <iframe src="https://www.youtube.com/embed/qb-0Iy9mb1A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                      </div>
@@ -222,7 +221,7 @@
                 <!-- Short Film Collection -->
                 <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
                     <div class="order-2 md:order-1">
-                        <h3 class="text-4xl font-bold text-white mb-4"><span class="gradient-text">One-Man Crew</span>: Short Film Collection</h3>
+                        <h3 class="text-3xl md:text-4xl font-bold text-white mb-4"><span class="gradient-text">One-Man Crew</span>: Short Film Collection</h3>
                         <p class="text-gray-400 mb-4 text-lg">
                             A project that defines my creative drive. I produced a collection of short films handling every role: director, writer, editor, cinematographer, and actor—often in a double role. This collection demonstrates my project management and end-to-end production skills.
                         </p>
@@ -231,14 +230,14 @@
                         </a>
                     </div>
                     <div class="order-1 md:order-2">
-                        <div class="aspect-video glass-card rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30">
-                            <iframe src="https://www.youtube.com/embed/videoseries?list=PLdNBY2e1p-PPsxirNPCZEetwuRFzVwl7l" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="aspect-video glass-card rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 interactive-card">
+                            <iframe src="https://www.youtube.com/embed/laU-y4uIWKU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
                 </div>
 
                 <!-- Thumbnail Design -->
-                <div>
+                <div class="mb-20">
                     <h3 class="text-3xl font-bold text-center text-white mb-8">High-Impact Thumbnail Design</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
                         <div class="aspect-video rounded-lg overflow-hidden thumbnail-img-container">
@@ -255,26 +254,38 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Technical Projects Section -->
+                <div>
+                     <h3 class="text-3xl font-bold text-center text-white mb-8">Technical Projects</h3>
+                    <div class="max-w-2xl mx-auto">
+                        <div class="glass-card p-8 rounded-xl shadow-lg interactive-card">
+                            <h4 class="text-2xl font-bold text-white">Amazon Homepage Clone</h4>
+                            <p class="text-gray-400 mt-2 mb-4">
+                                A pixel-perfect replica of the Amazon homepage, built to practice and solidify my fundamental HTML and CSS skills. This project focused on complex layouts and responsive design.
+                            </p>
+                            <a href="https://aryannbhandari29.github.io/1st-HTML-CSS-Project/" target="_blank" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Technical Projects Section -->
-        <section id="technical" class="py-20 bg-gray-900/50 section-fade-in">
-             <div class="container mx-auto px-6">
-                <div class="text-center mb-12">
-                    <h2 class="text-5xl font-extrabold text-white">Technical Projects</h2>
-                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">Applying my learning through hands-on projects.</p>
+        <!-- Beyond the Curriculum Section -->
+        <section id="curiosity" class="py-20 bg-black section-fade-in">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Beyond the Curriculum</h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">Exploring the bigger questions that drive innovation.</p>
                 </div>
-                <div class="max-w-2xl mx-auto">
-                    <div class="glass-card p-8 rounded-xl shadow-lg">
-                        <h4 class="text-2xl font-bold text-white">Amazon Homepage Clone</h4>
-                        <p class="text-gray-400 mt-2 mb-4">
-                            A pixel-perfect replica of the Amazon homepage, built to practice and solidify my fundamental HTML and CSS skills. This project focused on complex layouts and responsive design.
-                        </p>
-                        <a href="https://aryannbhandari29.github.io/1st-HTML-CSS-Project/" target="_blank" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
-                            Live Demo
-                        </a>
-                    </div>
+                <div class="max-w-3xl mx-auto glass-card p-8 rounded-xl shadow-lg text-center interactive-card">
+                    <i data-lucide="brain-circuit" class="w-24 h-24 text-violet-400 mx-auto mb-6 hero-glow rounded-full"></i>
+                    <h3 class="text-2xl font-bold text-white">Independent Research: The Simulation Hypothesis</h3>
+                    <p class="text-gray-400 mt-2">
+                       I dedicate time to researching complex, abstract topics like the Simulation Theory. This exploration into theoretical physics and philosophy isn't just a hobby—it's how I train my mind to approach vast, undefined problems, a skill I believe is essential for tackling the next generation of technical challenges.
+                    </p>
                 </div>
             </div>
         </section>
@@ -283,10 +294,10 @@
         <section id="contact" class="py-20 section-fade-in">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-5xl font-extrabold text-white">Let's Connect</h2>
+                    <h2 class="text-4xl sm:text-5xl font-extrabold text-white">Let's Connect</h2>
                     <p class="text-gray-400 mt-3 text-lg">I'm currently seeking internship opportunities and am open to collaborations.</p>
                 </div>
-                <div class="max-w-lg mx-auto text-center glass-card p-8 rounded-2xl">
+                <div class="max-w-lg mx-auto text-center glass-card p-8 rounded-2xl interactive-card">
                     <p class="text-lg text-gray-300 mb-6">
                         Have a question or want to work together? Feel free to reach out.
                     </p>
@@ -347,6 +358,27 @@
         function scrollToTop() {
             window.scrollTo({top: 0, behavior: 'smooth'});
         }
+
+        // Interactive Card Tilt Effect
+        document.querySelectorAll('.interactive-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 30; // Reduced sensitivity
+                const rotateY = (centerX - x) / 30;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
     </script>
 </body>
 </html>
