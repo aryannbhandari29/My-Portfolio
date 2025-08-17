@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aryan Bhandari - Filmmaker & Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a0a; /* Darker background */
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .thumbnail-img-container {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .thumbnail-img-container:hover {
+            transform: scale(1.05) rotate(1deg);
+            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.5); /* Brighter violet shadow */
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hero-glow {
+            box-shadow: 0 0 80px 20px rgba(124, 58, 237, 0.4);
+        }
+        /* Added for blob animation */
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+        .animation-delay-2000 { animation-delay: 2s; }
+        .animation-delay-4000 { animation-delay: 4s; }
+    </style>
+</head>
+<body class="bg-black text-gray-200">
+
+    <!-- Header -->
+    <header class="bg-black/70 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 border-b border-gray-800">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-extrabold text-white tracking-wider">ARYAN BHANDARI</a>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="text-gray-300 hover:text-white transition duration-300">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-white transition duration-300">Skills</a>
+                <a href="#creative" class="text-gray-300 hover:text-white transition duration-300">Creative Work</a>
+                <a href="#contact" class="bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-5 rounded-lg transition duration-300">Contact</a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 glass-card m-4 rounded-lg border-none">
+            <a href="#about" class="block py-2 text-gray-200 hover:text-white">About</a>
+            <a href="#skills" class="block py-2 text-gray-200 hover:text-white">Skills</a>
+            <a href="#creative" class="block py-2 text-gray-200 hover:text-white">Creative Work</a>
+            <a href="#contact" class="block mt-2 bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-lg text-center">Contact</a>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <!-- Hero Section -->
+        <section id="home" class="container mx-auto px-6 py-24 md:py-40 text-center relative overflow-hidden">
+             <div class="absolute -top-20 -left-20 w-96 h-96 bg-violet-500 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob"></div>
+             <div class="absolute -bottom-20 -right-20 w-96 h-96 bg-pink-500 rounded-full mix-blend-screen filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+            <div class="max-w-4xl mx-auto relative z-10">
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white leading-tight mb-4">
+                    <span class="gradient-text">Creator, Filmmaker,</span><br/>and Full Stack Developer
+                </h1>
+                <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
+                    A Computer Science student at KIIT, passionate about building powerful applications and telling compelling stories.
+                </p>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.linkedin.com/in/aryan-bhandari-2242b52a1" target="_blank" class="text-gray-400 hover:text-white hover:scale-110 transition-transform duration-300"><i data-lucide="linkedin" class="w-8 h-8"></i></a>
+                    <a href="https://www.youtube.com/c/ARYANBHANDARI" target="_blank" class="text-gray-400 hover:text-white hover:scale-110 transition-transform duration-300"><i data-lucide="youtube" class="w-8 h-8"></i></a>
+                    <a href="https://www.instagram.com/aryannbhandari" target="_blank" class="text-gray-400 hover:text-white hover:scale-110 transition-transform duration-300"><i data-lucide="instagram" class="w-8 h-8"></i></a>
+                    <a href="https://github.com/aryannbhandari29" id="github-link" target="_blank" class="text-gray-400 hover:text-white hover:scale-110 transition-transform duration-300"><i data-lucide="github" class="w-8 h-8"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="py-20 bg-black section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-5 gap-12 items-center">
+                    <div class="md:col-span-2">
+                        <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/bade7293-f9a9-4f7c-8c2b-ace61165c282" alt="Aryan Bhandari" class="rounded-2xl w-full max-w-xs mx-auto border-4 border-violet-500/50 shadow-lg hero-glow">
+                    </div>
+                    <div class="md:col-span-3">
+                        <h2 class="text-4xl font-bold text-white mb-4">From Storyboard to Keyboard</h2>
+                        <p class="text-gray-400 text-lg">
+                           I'm a creator who learned to manage entire projects—from script to final cut—on my own. This taught me to solve problems creatively and see the bigger picture. Now, I'm channeling that same passion into technology, learning to build applications with the same dedication I give to my films.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-extrabold text-white">Skills & Competencies</h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">A blend of creative strengths and a growing technical foundation.</p>
+                </div>
+
+                <!-- Professional Competencies (Soft Skills) -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Professional Competencies</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-5xl mx-auto">
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
+                                <i data-lucide="film" class="w-10 h-10 text-violet-400"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-white">Storytelling</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
+                                <i data-lucide="clipboard-check" class="w-10 h-10 text-violet-400"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-white">Project Management</h4>
+                        </div>
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
+                                <i data-lucide="lightbulb" class="w-10 h-10 text-violet-400"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-white">Problem Solving</h4>
+                        </div>
+                        <div class="text-center">
+                             <div class="w-20 h-20 mx-auto glass-card rounded-full flex items-center justify-center mb-4 border border-violet-500/50">
+                                <i data-lucide="mic" class="w-10 h-10 text-violet-400"></i>
+                            </div>
+                            <h4 class="text-xl font-semibold text-white">Public Speaking</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Creative Production Skills -->
+                <div class="mb-16">
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">Creative Production</h3>
+                    <div class="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Video Editing (DaVinci Resolve)</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Graphic Design</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Canva</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Videography</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Direction</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Script Writing</span>
+                    </div>
+                </div>
+
+                <!-- My Technical Journey -->
+                <div>
+                    <h3 class="text-3xl font-bold text-white mb-8 text-center">My Technical Journey</h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Full Stack Web Development</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Data Structures & Algorithms</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">JavaScript</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">React</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">Node.js</span>
+                        <span class="bg-gray-800 text-gray-300 font-medium px-5 py-2 rounded-full">C++</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Creative Work Section -->
+        <section id="creative" class="py-20 bg-black section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-5xl font-extrabold text-white">My Creative Universe</h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">A showcase of my skills in storytelling, filmmaking, and design.</p>
+                </div>
+
+                <!-- Viral Video -->
+                <div class="mb-20">
+                     <h3 class="text-3xl font-bold text-center text-white mb-2">Most Viral Video</h3>
+                     <p class="text-center text-gray-400 mb-8">This KIIT University tour reached over 32k viewers and highlights my vlogging style.</p>
+                     <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 hero-glow">
+                        <iframe src="https://www.youtube.com/embed/qb-0Iy9mb1A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                     </div>
+                </div>
+
+                <!-- Short Film Collection -->
+                <div class="grid md:grid-cols-2 gap-12 items-center mb-20">
+                    <div class="order-2 md:order-1">
+                        <h3 class="text-4xl font-bold text-white mb-4"><span class="gradient-text">One-Man Crew</span>: Short Film Collection</h3>
+                        <p class="text-gray-400 mb-4 text-lg">
+                            A project that defines my creative drive. I produced a collection of short films handling every role: director, writer, editor, cinematographer, and actor—often in a double role. This collection demonstrates my project management and end-to-end production skills.
+                        </p>
+                        <a href="https://www.youtube.com/playlist?list=PLdNBY2e1p-PPsxirNPCZEetwuRFzVwl7l" target="_blank" class="text-violet-400 hover:text-violet-300 font-bold inline-flex items-center text-lg">
+                            Watch The Collection <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                        </a>
+                    </div>
+                    <div class="order-1 md:order-2 aspect-w-16 aspect-h-9 glass-card rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30">
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdNBY2e1p-PPsxirNPCZEetwuRFzVwl7l" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                    </div>
+                </div>
+
+                <!-- Thumbnail Design -->
+                <div>
+                    <h3 class="text-3xl font-bold text-center text-white mb-8">High-Impact Thumbnail Design</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
+                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/9532f6b5-6c9e-4918-83eb-fbd0ebccebaf" alt="KIIT University New Campus Thumbnail" class="w-full h-full object-cover">
+                        </div>
+                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/af4f507a-173f-4c4e-ad66-8bbf1ad7f625" alt="Room Setup Thumbnail" class="w-full h-full object-cover">
+                        </div>
+                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/0adca5ca-0854-4b08-86a7-66985b82326d" alt="Pushed out by my clone thumbnail" class="w-full h-full object-cover">
+                        </div>
+                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/6dc047c9-0c84-4cbb-8abc-d61e108546e8" alt="CTRL+Z Short Film Poster" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Projects Section -->
+        <section id="technical" class="py-20 bg-gray-900/50 section-fade-in">
+             <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-extrabold text-white">Technical Projects</h2>
+                    <p class="text-gray-400 mt-3 max-w-2xl mx-auto text-lg">Applying my learning through hands-on projects.</p>
+                </div>
+                <div class="max-w-2xl mx-auto">
+                    <div class="glass-card p-8 rounded-xl shadow-lg">
+                        <h4 class="text-2xl font-bold text-white">Amazon Homepage Clone</h4>
+                        <p class="text-gray-400 mt-2 mb-4">
+                            A pixel-perfect replica of the Amazon homepage, built to practice and solidify my fundamental HTML and CSS skills. This project focused on complex layouts and responsive design.
+                        </p>
+                        <a href="https://github.com/aryannbhandari29/1st-HTML-CSS-Project" id="amazon-clone-link" target="_blank" class="text-violet-400 hover:text-violet-300 font-bold inline-flex items-center">
+                            View on GitHub <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 section-fade-in">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-extrabold text-white">Let's Connect</h2>
+                    <p class="text-gray-400 mt-3 text-lg">I'm currently seeking internship opportunities and am open to collaborations.</p>
+                </div>
+                <div class="max-w-lg mx-auto text-center glass-card p-8 rounded-2xl">
+                    <p class="text-lg text-gray-300 mb-6">
+                        Have a question or want to work together? Feel free to reach out.
+                    </p>
+                    <a href="mailto:aaryanbhandariavr@gmail.com" class="inline-block bg-violet-600 hover:bg-violet-700 text-white font-bold py-4 px-10 rounded-lg text-lg transition duration-300 w-full md:w-auto">
+                        aaryanbhandariavr@gmail.com
+                    </a>
+                    <p class="text-gray-500 mt-6">Phone: +91 9813626712</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-gray-800">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-500">
+            <p>&copy; 2025 Aryan Bhandari. Designed & Built from scratch.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="to-top-button" onclick="scrollToTop()" class="hidden fixed bottom-8 right-8 bg-violet-600/50 text-white p-3 rounded-full shadow-lg hover:bg-violet-600 transition-opacity duration-300">
+      <i data-lucide="arrow-up" class="w-6 h-6"></i>
+    </button>
+
+    <script>
+        lucide.createIcons();
+
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const sections = document.querySelectorAll('.section-fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        sections.forEach(section => { observer.observe(section); });
+
+        // Scroll to Top Button Logic
+        const toTopButton = document.getElementById('to-top-button');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                toTopButton.classList.remove('hidden');
+            } else {
+                toTopButton.classList.add('hidden');
+            }
+        };
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+    </script>
+</body>
+</html>
