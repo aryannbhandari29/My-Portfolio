@@ -54,17 +54,19 @@
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
         
-        /* Fix for aspect ratio on some browsers */
-        .aspect-w-16 {
+        /* Fix for aspect ratio on all browsers */
+        .aspect-video {
             position: relative;
-            padding-bottom: 56.25%; /* 9 / 16 = 0.5625 */
-        }
-        .aspect-w-16 > * {
-            position: absolute;
-            height: 100%;
             width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+        }
+        .aspect-video iframe,
+        .aspect-video img {
+            position: absolute;
             top: 0;
             left: 0;
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
@@ -210,7 +212,7 @@
                 <div class="mb-20">
                      <h3 class="text-3xl font-bold text-center text-white mb-2">Most Viral Video</h3>
                      <p class="text-center text-gray-400 mb-8">This KIIT University tour reached over 32k viewers and highlights my vlogging style.</p>
-                     <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 hero-glow">
+                     <div class="aspect-video max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 hero-glow">
                         <iframe src="https://www.youtube.com/embed/qb-0Iy9mb1A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                      </div>
                 </div>
@@ -226,7 +228,7 @@
                             Watch The Collection <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
                         </a>
                     </div>
-                    <div class="order-1 md:order-2 aspect-w-16 aspect-h-9 glass-card rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30">
+                    <div class="order-1 md:order-2 aspect-video glass-card rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30">
                         <iframe src="https://www.youtube.com/embed/videoseries?list=PLdNBY2e1p-PPsxirNPCZEetwuRFzVwl7l" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
@@ -235,17 +237,17 @@
                 <div>
                     <h3 class="text-3xl font-bold text-center text-white mb-8">High-Impact Thumbnail Design</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
-                        <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="thumbnail-kiit.jpg" alt="KIIT University New Campus Thumbnail" class="w-full h-full object-cover">
+                        <div class="aspect-video rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="thumbnail-kiit.jpg" alt="KIIT University New Campus Thumbnail" class="object-cover">
                         </div>
-                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="thumbnail-setup.webp" alt="Room Setup Thumbnail" class="w-full h-full object-cover">
+                         <div class="aspect-video rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="thumbnail-setup.webp" alt="Room Setup Thumbnail" class="object-cover">
                         </div>
-                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="thumbnail-clone.webp" alt="Pushed out by my clone thumbnail" class="w-full h-full object-cover">
+                         <div class="aspect-video rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="thumbnail-clone.webp" alt="Pushed out by my clone thumbnail" class="object-cover">
                         </div>
-                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="thumbnail-ctrlz.webp" alt="CTRL+Z Short Film Poster" class="w-full h-full object-cover">
+                         <div class="aspect-video rounded-lg overflow-hidden thumbnail-img-container">
+                            <img src="thumbnail-ctrlz.webp" alt="CTRL+Z Short Film Poster" class="object-cover">
                         </div>
                     </div>
                 </div>
@@ -265,14 +267,9 @@
                         <p class="text-gray-400 mt-2 mb-4">
                             A pixel-perfect replica of the Amazon homepage, built to practice and solidify my fundamental HTML and CSS skills. This project focused on complex layouts and responsive design.
                         </p>
-                        <div class="flex flex-wrap gap-4 mt-6">
-                             <a href="https://aryannbhandari29.github.io/1st-HTML-CSS-Project/" target="_blank" class="flex-1 text-center bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-                                Live Demo
-                            </a>
-                            <a href="https://github.com/aryannbhandari29/1st-HTML-CSS-Project" target="_blank" class="flex-1 text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
-                                View on GitHub
-                            </a>
-                        </div>
+                        <a href="https://aryannbhandari29.github.io/1st-HTML-CSS-Project/" target="_blank" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-bold py-3 px-4 rounded-lg transition duration-300">
+                            Live Demo
+                        </a>
                     </div>
                 </div>
             </div>
