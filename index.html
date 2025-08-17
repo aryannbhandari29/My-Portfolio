@@ -53,6 +53,19 @@
         }
         .animation-delay-2000 { animation-delay: 2s; }
         .animation-delay-4000 { animation-delay: 4s; }
+        
+        /* Fix for aspect ratio on some browsers */
+        .aspect-w-16 {
+            position: relative;
+            padding-bottom: 56.25%; /* 9 / 16 = 0.5625 */
+        }
+        .aspect-w-16 > * {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            left: 0;
+        }
     </style>
 </head>
 <body class="bg-black text-gray-200">
@@ -106,7 +119,7 @@
             <div class="container mx-auto px-6">
                 <div class="grid md:grid-cols-5 gap-12 items-center">
                     <div class="md:col-span-2">
-                        <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/bade7293-f9a9-4f7c-8c2b-ace61165c282" alt="Aryan Bhandari" class="rounded-2xl w-full max-w-xs mx-auto border-4 border-violet-500/50 shadow-lg hero-glow">
+                        <img src="profile.jpg" alt="Aryan Bhandari" class="rounded-2xl w-full max-w-xs mx-auto border-4 border-violet-500/50 shadow-lg hero-glow">
                     </div>
                     <div class="md:col-span-3">
                         <h2 class="text-4xl font-bold text-white mb-4">From Storyboard to Keyboard</h2>
@@ -198,7 +211,7 @@
                      <h3 class="text-3xl font-bold text-center text-white mb-2">Most Viral Video</h3>
                      <p class="text-center text-gray-400 mb-8">This KIIT University tour reached over 32k viewers and highlights my vlogging style.</p>
                      <div class="aspect-w-16 aspect-h-9 max-w-4xl mx-auto rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30 hero-glow">
-                        <iframe src="https://www.youtube.com/embed/qb-0Iy9mb1A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                        <iframe src="https://www.youtube.com/embed/qb-0Iy9mb1A" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                      </div>
                 </div>
 
@@ -214,7 +227,7 @@
                         </a>
                     </div>
                     <div class="order-1 md:order-2 aspect-w-16 aspect-h-9 glass-card rounded-xl overflow-hidden shadow-2xl border-2 border-violet-500/30">
-                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdNBY2e1p-PPsxirNPCZEetwuRFzVwl7l" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="w-full h-full"></iframe>
+                        <iframe src="https://www.youtube.com/embed/videoseries?list=PLdNBY2e1p-PPsxirNPCZEetwuRFzVwl7l" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
@@ -223,16 +236,16 @@
                     <h3 class="text-3xl font-bold text-center text-white mb-8">High-Impact Thumbnail Design</h3>
                     <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
                         <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/9532f6b5-6c9e-4918-83eb-fbd0ebccebaf" alt="KIIT University New Campus Thumbnail" class="w-full h-full object-cover">
+                            <img src="thumbnail-kiit.jpg" alt="KIIT University New Campus Thumbnail" class="w-full h-full object-cover">
                         </div>
                          <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/af4f507a-173f-4c4e-ad66-8bbf1ad7f625" alt="Room Setup Thumbnail" class="w-full h-full object-cover">
+                            <img src="thumbnail-setup.webp" alt="Room Setup Thumbnail" class="w-full h-full object-cover">
                         </div>
                          <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/0adca5ca-0854-4b08-86a7-66985b82326d" alt="Pushed out by my clone thumbnail" class="w-full h-full object-cover">
+                            <img src="thumbnail-clone.webp" alt="Pushed out by my clone thumbnail" class="w-full h-full object-cover">
                         </div>
                          <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden thumbnail-img-container">
-                            <img src="https://storage.googleapis.com/gemini-prod-us-east1-user-uploads/6dc047c9-0c84-4cbb-8abc-d61e108546e8" alt="CTRL+Z Short Film Poster" class="w-full h-full object-cover">
+                            <img src="thumbnail-ctrlz.webp" alt="CTRL+Z Short Film Poster" class="w-full h-full object-cover">
                         </div>
                     </div>
                 </div>
@@ -252,9 +265,14 @@
                         <p class="text-gray-400 mt-2 mb-4">
                             A pixel-perfect replica of the Amazon homepage, built to practice and solidify my fundamental HTML and CSS skills. This project focused on complex layouts and responsive design.
                         </p>
-                        <a href="https://github.com/aryannbhandari29/1st-HTML-CSS-Project" id="amazon-clone-link" target="_blank" class="text-violet-400 hover:text-violet-300 font-bold inline-flex items-center">
-                            View on GitHub <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
-                        </a>
+                        <div class="flex flex-wrap gap-4 mt-6">
+                             <a href="https://aryannbhandari29.github.io/1st-HTML-CSS-Project/" target="_blank" class="flex-1 text-center bg-violet-600 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                                Live Demo
+                            </a>
+                            <a href="https://github.com/aryannbhandari29/1st-HTML-CSS-Project" target="_blank" class="flex-1 text-center bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg transition duration-300">
+                                View on GitHub
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
